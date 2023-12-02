@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div style="margin-top: 10%; margin-left: 30%" class="card-body text-white">
+    {{ error }}
+        <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+                <p>{{ field.label_tag }} {{ field }}</p>
+    {% endfor %}
+    <input type="submit" value="Войти">
+</form>
+    <input type="button" value="Регистрация" onClick='location.href="/register"'></div>
+
+{% endblock content %}

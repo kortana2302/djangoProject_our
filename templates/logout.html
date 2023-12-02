@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div style="margin-top: 10%; margin-left: 35%" class="card-body text-white">
+    <div>
+        <p>Текущий пользователь: {{ username }}</p>
+    </div>
+        <div>
+            <form method='post'>
+                {% csrf_token %}
+                <input type="submit" value="Выйти" onClick='location.href="/"'></div>
+            </form>
+        </div>
+
+
+{% endblock content %}
