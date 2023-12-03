@@ -107,12 +107,17 @@ def get_register(request):
     if request.method == "POST":
         form = RegisterForm(request.POST)
         if form.is_valid():
-            b = Users(user_name=form.cleaned_data['username'],
-                      password=form.cleaned_data['password'],
-                      first_name=form.cleaned_data['first_name'],
-                      last_name=form.cleaned_data['last_name'])
-            b.save()
-            return HttpResponseRedirect('/enter')
+            try:
+                data = Users.objects.get(user_name=form.cleaned_data['username'])
+                error = 'Такой логин уже существует'
+                return render(request, "register.html", {"form": form, "username": username, 'error':error})
+            except:
+                b = Users(user_name=form.cleaned_data['username'],
+                          password=form.cleaned_data['password'],
+                          first_name=form.cleaned_data['first_name'],
+                          last_name=form.cleaned_data['last_name'])
+                b.save()
+                return HttpResponseRedirect('/enter')
     else:
         form = RegisterForm()
     return render(request, "register.html", {"form": form,"username":username})

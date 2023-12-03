@@ -2,6 +2,7 @@
 
 {% block content %}
     <div style="margin-top: 10%; margin-left: 35%" class="card-body text-white">
+    <p style="color: red">{{ error }}</p>
         <form method="post">
     {% csrf_token %}
             {% for field in form %}
