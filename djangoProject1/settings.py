@@ -39,8 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'google_translate',
     'djongo',
+    'google_translate',
     'blog'
 ]
 
@@ -83,8 +83,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'django',
+        'CLIENT': {
+            'host': 'mongodb://172.17.0.2:27017',
+        }
     }
-}
+    }
 
 
 # Password validation
