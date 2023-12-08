@@ -1,0 +1,30 @@
+services:
+  django:
+    build:
+      context: .
+      dockerfile: djangoProject1/Dockerfile
+    container_name: django
+    restart: always
+    environment:
+        - DB_HOST=mongo
+        - DB_USER-root
+        - 0B_PASSWORD=root
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    container_name: mongo
+    hostname: mongo
+    restart: always
+    environment:
+      MOVED_Into_ROOT_USERNAME: root
+      MONGOD_INITDB_ROOT_PASSWORD: root
+    volumes:
+      - mongodb_data:/data/db
+    ports:
+      - "27017:27017"
+volumes:
+    mongodb_data:
+      name: mongo_data

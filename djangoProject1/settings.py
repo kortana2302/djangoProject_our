@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS=['http://localhost:3000']
 
 
 # Application definition
@@ -82,9 +83,9 @@ WSGI_APPLICATION = 'djangoProject1.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'django',
+        'NAME': 'new_database',
         'CLIENT': {
-            'host': 'mongodb://172.17.0.2:27017',
+            'host': 'mongodb://172.22.0.2:27017',
         }
     }
     }
